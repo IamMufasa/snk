@@ -2,8 +2,8 @@ name: Generate GitHub Contribution Snake
 
 on:
   schedule:
-    - cron: "0 0 * * *" # every day at midnight UTC
-  workflow_dispatch:
+    - cron: "0 0 * * *" # Runs daily
+  workflow_dispatch:    # Allows manual run
 
 jobs:
   generate:
@@ -18,7 +18,8 @@ jobs:
       - name: Push to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4.1.0
         with:
-          target_branch: output
+          target_branch: output   # <— this will be created automatically
           build_dir: dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
